@@ -1,15 +1,23 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
+import Card from './Card';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
-    </div>
-  );
+	axios
+		.get('https://api.nasa.gov/planetary/apod ')
+		.then((res) => {
+			console.log(`Resolved: `, res);
+		})
+		.catch((err) => {
+			console.log(`Error: `, err);
+		});
+
+	return (
+		<div className='App'>
+			<Card />
+		</div>
+	);
 }
 
 export default App;
